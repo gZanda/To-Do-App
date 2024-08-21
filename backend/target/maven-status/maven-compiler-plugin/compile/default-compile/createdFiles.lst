@@ -1,0 +1,4 @@
+com/todo/backend/controllers/TaskController.class
+com/todo/backend/repositories/TaskRepository.class
+com/todo/backend/models/Task.class
+com/todo/backend/BackendApplication.class
