@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: back-end
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: back-end
+  template:
+    metadata:
+      labels:
+        app: back-end
+    spec:
+      containers:
+      - name: back-end
+        image: gzanda/devops-back:v0
+        ports:
+        - containerPort: 8080
+        env:
+        - name: SPRING_DATASOURCE_URL
+          value: jdbc:postgresql://db-service:5432/devops
+        - name: SPRING_DATASOURCE_USERNAME
+          value: postgres
+        - name: SPRING_DATASOURCE_PASSWORD
+          value: devops
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: back-end-service
+spec:
+  selector:
+    app: back-end
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+  type: ClusterIP
