@@ -1,0 +1,33 @@
+###
+
+// Get All
+
+GET http://localhost:8080/tasks
+content-type: application/json
+
+###
+
+// Post One
+
+POST http://localhost:8080/new-task
+content-type: application/json
+
+{
+  "title": "Task 3"
+}
+
+###
+
+// Get One
+
+GET http://localhost:8080/task/2
+content-type: application/json
+
+###
+
+// Delete One
+
+DELETE http://localhost:8080/delete/2
+content-type: application/json
+
+###
