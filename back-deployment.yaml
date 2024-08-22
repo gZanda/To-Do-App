@@ -21,9 +21,15 @@ spec:
         - name: SPRING_DATASOURCE_URL
           value: jdbc:postgresql://db-service:5432/devops
         - name: SPRING_DATASOURCE_USERNAME
-          value: postgres
+          valueFrom:
+            secretKeyRef:
+              name: db-secret
+              key: SPRING_DATASOURCE_USERNAME
         - name: SPRING_DATASOURCE_PASSWORD
-          value: devops
+          valueFrom:
+            secretKeyRef:
+              name: db-secret
+              key: SPRING_DATASOURCE_PASSWORD
 ---
 apiVersion: v1
 kind: Service
